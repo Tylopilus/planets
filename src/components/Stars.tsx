@@ -9,12 +9,17 @@ export function Stars(props) {
   createEffect(() => {
     const offsetX = ((x() - width() / 2) / width()) * 2;
     const offsetY = ((y() - height() / 2) / height()) * 2;
-    const elem = (c() as HTMLElement).children[0] as HTMLElement;
-    if (isInside()) {
-      elem.style.setProperty('--offsetX', offsetX.toString());
-      elem.style.setProperty('--offsetY', offsetY.toString());
+    const elem = [
+      (c() as HTMLElement).children[0] as HTMLElement,
+      (c() as HTMLElement).children[1] as HTMLElement,
+    ];
+    if (isInside() && x()) {
+      for (const el of elem) {
+        el.style.setProperty('--offsetX', offsetX.toString());
+        el.style.setProperty('--offsetY', offsetY.toString());
+      }
     }
   });
 
-  return <div $ServerOnly>{c()}</div>;
+  return <div>{c()}</div>;
 }

@@ -1,0 +1,70 @@
+---
+	import { Stars } from '../components/Stars.tsx'
+	import Nav from '../components/Nav.astro'
+---
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+	<meta name="viewport" content="width=device-width" />
+	<link rel="stylesheet" href={Astro.resolve('../styles/global.css')}>
+	<link rel='preload' href='/fonts/montserrat-v18-latin-regular.woff2' as="font" type="font/woff2" crossorigin/>
+	<title>Welcome to Planets</title>
+</head>
+
+<body class="font-montserrat text-white container mx-auto">
+	<Stars client:idle >
+			<img class='img1' src='/images/stars.webp' alt='stars' />
+			<img class='img2' src='/images/stars.webp' alt='stars' />
+	</Stars>
+	<Nav />
+	<slot />
+</body>
+
+</html>
+
+<style lang='scss'>
+:root {
+	--offsetX: 0.2;
+	--offsetY: 0.7;
+}
+
+body{
+	margin: 0;
+	background: black;
+}
+section {
+	overflow: hidden;
+	height: 100vh;
+	width: 100vw;
+	inset: 0;
+	// position: fixed;
+	display: grid;
+	place-items: center;
+	color: white;
+}
+	.img1 {
+		width: 120%;
+		height: 120%;
+		opacity: .6;
+		object-fit: cover;
+		position: fixed;
+		top: 0;
+		left: 0;
+		transform: translate(calc(var(--offsetX) * .11%), calc(var(--offsetY) * .11%));
+		z-index: -1;
+	}
+	.img2 {
+		opacity: .9;
+		mix-blend-mode: multiply;
+		width: 120%;
+		height: 120%;
+		object-fit: cover;
+		position: fixed;
+		top: 0;
+		left: 0;
+		transform: translate(calc(var(--offsetX) * -.15%), calc(var(--offsetY) * -.15%)) rotate(180deg) scale(2);
+		z-index: -1;
+	}
+
+</style>

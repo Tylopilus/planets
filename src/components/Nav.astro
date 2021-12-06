@@ -1,0 +1,47 @@
+---
+const active = Astro.request.url.pathname;
+---
+
+<nav class="flex items-center justify-between p-4">
+  <img src="/images/logo.svg" alt="nasa logo" class="w-16" />
+  <ul class="flex gap-8 text-gray-600">
+    <!-- this errors out -->
+    <li>
+      <a
+        href="/"
+        aria-current={active === '/' ? 'page' : undefined}
+        data-active={active === '/' ? 'true' : 'false'}>Home</a>
+    </li>
+    <li>
+      <a
+        href="/about"
+        aria-current={active.match('/about/?') ? 'page' : undefined}
+        data-active={active.match('/about/?') ? 'true' : 'false'}>About</a>
+    </li>
+    <li>
+      <a
+        href="/contact"
+        aria-current={active.match('/contact/?') ? 'page' : undefined}
+        data-active={active.match('/contact/?') ? 'true' : 'false'}>Contact</a>
+    </li>
+  </ul>
+</nav>
+
+<style lang="scss">
+  [data-active='true'] {
+    color: #bbb;
+    position: relative;
+    &::after {
+      content: '';
+      left: 40%;
+      bottom: 0;
+      margin-bottom: -0.35em;
+      width: 60%;
+      border-bottom: 2px solid #ccc;
+      position: absolute;
+    }
+  }
+  a:hover {
+    color: #bbb;
+  }
+</style>

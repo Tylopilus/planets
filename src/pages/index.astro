@@ -1,73 +1,9 @@
 ---
-	import { Stars } from '../components/Stars.tsx'
+	import BasicLayout from '../layouts/BasicLayout.astro'
 ---
 
-<html lang="en">
+<BasicLayout>
 
-<head>
-	<meta charset="utf-8" />
-	<link rel="icon" type="image/x-icon" href="/favicon.ico" />
-	<meta name="viewport" content="width=device-width" />
-	<link rel="stylesheet" href={Astro.resolve('../styles/global.css')}>
-	<link rel='preload' href='/fonts/montserrat-v18-latin-regular.woff2' as="font" type="font/woff2" crossorigin/>
-	<title>Welcome to Astro</title>
-</head>
+</BasicLayout>
 
-<body class="font-montserrat text-white">
-	<Stars client:idle >
-			<img class='img1' src='./images/stars.webp' alt='stars' />
-			<img class='img2' src='./images/stars.webp' alt='stars' />
-	</Stars>
-	<nav>
-		<ul>
-			<li><a href="/">Home</a></li>
-			<li><a href="/about">About</a></li>
-			<li><a href="/contact">Contact</a></li>
-		</ul>
-	</nav>
-</body>
 
-</html>
-
-<style lang='scss'>
-body{
-	margin: 0;
-	background: black;
-}
-section {
-	overflow: hidden;
-	height: 100vh;
-	width: 100vw;
-	inset: 0;
-	// position: fixed;
-	display: grid;
-	place-items: center;
-	color: white;
-}
-	.img1 {
-		width: 120%;
-		height: 120%;
-		opacity: .6;
-		object-fit: cover;
-		position: fixed;
-		top: -10%;
-		left: -10%;
-		transform: translate(calc(var(--offsetX) * .11%), calc(var(--offsetY) * .11%));
-		z-index: -1;
-	}
-	.img2 {
-		opacity: .7;
-		mix-blend-mode: multiply;
-		width: 120%;
-		height: 120%;
-		object-fit: cover;
-		position: fixed;
-		top: -9%;
-		left: -9%;
-		transform: translate(calc(var(--offsetX) * -.15%), calc(var(--offsetY) * -.15%)) rotate(180deg) ;
-		z-index: -1;
-	}
-	h1 {
-		color: white;
-	}
-</style>
