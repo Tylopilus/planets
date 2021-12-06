@@ -1,5 +1,6 @@
 ---
-// Component imports and setup JavaScript go here!
+	import { Stars } from '../components/Stars.tsx'
+	let img;
 ---
 
 <html lang="en">
@@ -16,7 +17,48 @@
 </head>
 
 <body>
-	<h1>Welcome to <a href="https://astro.build/">Astro</a></h1>
+
+
+	<Stars client:idle >
+		<!-- <div class='img1'></div> -->
+		<section>
+		<img class='img1' src='./images/stars.webp' alt='stars' />
+		<img class='img2' src='./images/stars.webp' alt='stars' />
+		</section>
+	</Stars>
+
 </body>
 
 </html>
+
+<style lang='scss'>
+body{
+	margin: 0;
+}
+section {
+	overflow: hidden;
+	height: 100vh;
+	width: 100vw;
+	position: relative;
+}
+	.img1 {
+		width: 120%;
+		height: 120%;
+		object-fit: cover;
+		position: absolute;
+		top: -10%;
+		left: -10%;
+		transform: translate(calc(var(--offsetX) * .21%), calc(var(--offsetY) * .21%));
+	}
+	.img2 {
+		opacity: .7;
+		mix-blend-mode: multiply;
+		width: 120%;
+		height: 120%;
+		object-fit: cover;
+		position: absolute;
+		top: -9%;
+		left: -9%;
+		transform: translate(calc(var(--offsetX) * -.35%), calc(var(--offsetY) * -.35%)) rotate(180deg) ;
+	}
+</style>
