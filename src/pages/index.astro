@@ -1,9 +1,184 @@
 ---
-	import BasicLayout from '../layouts/BasicLayout.astro'
+import BasicLayout from '../layouts/BasicLayout.astro';
 ---
 
 <BasicLayout>
-
+  <main class="mx-4">
+    <div class="placeholder">
+      <h1 class="text-6xl">Planets of our solar system</h1>
+    </div>
+    <div class="planet-wrapper" id="mercury">
+      <div class="planet-container">
+        <img src="/images/planets/mercury.jpg" alt="Mercury" class="planet" />
+        <div class="gradient"></div>
+      </div>
+      <h2>Mercury</h2>
+      <div class="grad-blocker"></div>
+    </div>
+    <div class="planet-wrapper" id="venus">
+      <div class="planet-container">
+        <img src="/images/planets/venus.jpg" alt="Venus" class="planet" />
+        <div class="gradient"></div>
+      </div>
+      <h2>Venus</h2>
+      <div class="grad-blocker"></div>
+    </div>
+    <div class="planet-wrapper" id="venus">
+      <div class="planet-container">
+        <img src="/images/planets/earth.jpg" alt="Earth" class="planet" />
+        <div class="gradient"></div>
+      </div>
+      <h2>Earth</h2>
+      <div class="grad-blocker"></div>
+    </div>
+    <div class="planet-wrapper" id="venus">
+      <div class="planet-container">
+        <img
+          src="https://hdrei.org/w/images//7/76/Planet_Mars.jpg"
+          alt="Mars"
+          class="planet"
+        />
+        <div class="gradient"></div>
+      </div>
+      <h2>Mars</h2>
+      <div class="grad-blocker"></div>
+    </div>
+    <div class="planet-wrapper" id="venus">
+      <div class="planet-container">
+        <img
+          src="https://www.astronomie.de/fileadmin/user_upload/Sonnensystem/Jupiter/jupiter.jpg"
+          alt="Jupiter"
+          class="planet"
+        />
+        <div class="gradient"></div>
+      </div>
+      <h2>Jupiter</h2>
+      <div class="grad-blocker"></div>
+    </div>
+    <div class="planet-wrapper" id="venus">
+      <div class="planet-container">
+        <img src="/images/planets/saturn.png" alt="Saturn" class="planet" />
+        <div class="gradient"></div>
+      </div>
+      <h2>Saturn</h2>
+      <div class="grad-blocker"></div>
+    </div>
+    <div class="planet-wrapper" id="venus">
+      <div class="planet-container">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Uranus2.jpg/1200px-Uranus2.jpg"
+          alt="Uranus"
+          class="planet"
+        />
+        <div class="gradient"></div>
+      </div>
+      <h2>Uranus</h2>
+      <div class="grad-blocker"></div>
+    </div>
+    <div class="planet-wrapper" id="venus">
+      <div class="planet-container">
+        <img
+          src="https://www.watson.ch/imgdb/61fe/Qx,A,0,0,1024,1024,426,426,170,170/275845510659103"
+          alt="Neptun"
+          class="planet"
+        />
+        <div class="gradient"></div>
+      </div>
+      <h2>Neptun</h2>
+      <div class="grad-blocker"></div>
+    </div>
+  </main>
 </BasicLayout>
+<script>
+  const numSteps = 100;
+  function buildThresholdList() {
+    let thresholds = [];
 
+    for (let i = 1; i <= numSteps; i++) {
+      let ratio = i / numSteps;
+      thresholds.push(ratio);
+    }
 
+    thresholds.push(0);
+    return thresholds;
+  }
+  let options = {
+    root: null,
+    rootMargin: '0px',
+    threshold: buildThresholdList(),
+  };
+  let callback = (entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.boundingClientRect.top > 0) {
+        entry.target.parentElement
+          .querySelector('.gradient')
+          .style.setProperty('--end', entry.intersectionRatio * 100 + '%');
+      }
+    });
+  };
+  let observer = new IntersectionObserver(callback, options);
+  let targets = document.querySelectorAll('.grad-blocker');
+  for (target of targets) {
+    observer.observe(target);
+  }
+</script>
+
+<style lang="scss">
+  h2 {
+    @apply pt-8 text-6xl text-center;
+  }
+  .placeholder {
+    height: calc(100vh + 100px);
+    display: grid;
+    margin-top: -95.5px;
+    place-items: center;
+  }
+  .grad-blocker {
+    width: 1px;
+    height: 90vh;
+    /* background: red; */
+  }
+
+  .planet-wrapper {
+    /* height: 250vh; */
+    position: relative;
+
+    h2 {
+      padding-block-end: 100vh;
+    }
+    .planet-container {
+      z-index: -1;
+      position: sticky;
+      top: 0;
+      /* padding-top: 50%; */
+      width: 100%;
+      clip-path: circle(50% at 50% 50%);
+      /* transform: translateY(-50%); */
+    }
+    img {
+      width: 90vh;
+      aspect-ratio: 1;
+      height: auto;
+      margin: 0 auto;
+      clip-path: circle(50% at center);
+    }
+    .gradient {
+      content: '';
+      --end: 50%;
+      position: absolute;
+      inset: 0;
+      width: 90vh;
+      /* transform: translate(-50%, 0); */
+      aspect-ratio: 1;
+      height: auto;
+      margin: 0 auto;
+      z-index: 1;
+      clip-path: circle(50% at center);
+      background: radial-gradient(
+        circle at 23% 10%,
+        #00000000,
+        #000000 calc(100% - var(--end))
+      );
+    }
+  }
+</style>

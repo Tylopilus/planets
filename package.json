@@ -16,6 +16,7 @@
     "tailwindcss": "^2.2.19"
   },
   "dependencies": {
-    "@solid-primitives/mouse": "^1.0.0"
+    "@solid-primitives/mouse": "^1.0.0",
+    "scrollmagic": "^2.0.8"
   }
 }
