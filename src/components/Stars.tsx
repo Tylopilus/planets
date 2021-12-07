@@ -10,7 +10,6 @@ export function Stars(props) {
   createEffect(() => {
     const offsetX = (((x() - width() / 2) / width()) * 2) % 1;
     const offsetY = (((y() - height() / 2) / height()) * 2) % 1;
-    console.log(offsetX, offsetY);
     const elem = [
       (c() as HTMLElement).children[0] as HTMLElement,
       (c() as HTMLElement).children[1] as HTMLElement,
