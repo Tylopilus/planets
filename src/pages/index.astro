@@ -9,7 +9,12 @@ import BasicLayout from '../layouts/BasicLayout.astro';
     </div>
     <div class="planet-wrapper" id="mercury">
       <div class="planet-container">
-        <img src="/images/planets/mercury.jpg" alt="Mercury" class="planet" />
+        <img
+          loading="lazy"
+          src="/images/planets/mercury.jpg"
+          alt="Mercury"
+          class="planet"
+        />
         <div class="gradient"></div>
       </div>
       <h2>Mercury</h2>
@@ -17,7 +22,12 @@ import BasicLayout from '../layouts/BasicLayout.astro';
     </div>
     <div class="planet-wrapper" id="venus">
       <div class="planet-container">
-        <img src="/images/planets/venus.jpg" alt="Venus" class="planet" />
+        <img
+          loading="lazy"
+          src="/images/planets/venus.jpg"
+          alt="Venus"
+          class="planet"
+        />
         <div class="gradient"></div>
       </div>
       <h2>Venus</h2>
@@ -25,7 +35,12 @@ import BasicLayout from '../layouts/BasicLayout.astro';
     </div>
     <div class="planet-wrapper" id="venus">
       <div class="planet-container">
-        <img src="/images/planets/earth.jpg" alt="Earth" class="planet" />
+        <img
+          loading="lazy"
+          src="/images/planets/earth.jpg"
+          alt="Earth"
+          class="planet"
+        />
         <div class="gradient"></div>
       </div>
       <h2>Earth</h2>
@@ -34,6 +49,7 @@ import BasicLayout from '../layouts/BasicLayout.astro';
     <div class="planet-wrapper" id="venus">
       <div class="planet-container">
         <img
+          loading="lazy"
           src="https://hdrei.org/w/images//7/76/Planet_Mars.jpg"
           alt="Mars"
           class="planet"
@@ -46,6 +62,7 @@ import BasicLayout from '../layouts/BasicLayout.astro';
     <div class="planet-wrapper" id="venus">
       <div class="planet-container">
         <img
+          loading="lazy"
           src="https://www.astronomie.de/fileadmin/user_upload/Sonnensystem/Jupiter/jupiter.jpg"
           alt="Jupiter"
           class="planet"
@@ -57,7 +74,12 @@ import BasicLayout from '../layouts/BasicLayout.astro';
     </div>
     <div class="planet-wrapper" id="venus">
       <div class="planet-container">
-        <img src="/images/planets/saturn.png" alt="Saturn" class="planet" />
+        <img
+          loading="lazy"
+          src="/images/planets/saturn.png"
+          alt="Saturn"
+          class="planet"
+        />
         <div class="gradient"></div>
       </div>
       <h2>Saturn</h2>
@@ -66,6 +88,7 @@ import BasicLayout from '../layouts/BasicLayout.astro';
     <div class="planet-wrapper" id="venus">
       <div class="planet-container">
         <img
+          loading="lazy"
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Uranus2.jpg/1200px-Uranus2.jpg"
           alt="Uranus"
           class="planet"
@@ -78,6 +101,7 @@ import BasicLayout from '../layouts/BasicLayout.astro';
     <div class="planet-wrapper" id="venus">
       <div class="planet-container">
         <img
+          loading="lazy"
           src="https://www.watson.ch/imgdb/61fe/Qx,A,0,0,1024,1024,426,426,170,170/275845510659103"
           alt="Neptun"
           class="planet"
@@ -90,7 +114,7 @@ import BasicLayout from '../layouts/BasicLayout.astro';
   </main>
 </BasicLayout>
 <script>
-  const numSteps = 100;
+  const numSteps = 80;
   function buildThresholdList() {
     let thresholds = [];
 
@@ -167,7 +191,7 @@ import BasicLayout from '../layouts/BasicLayout.astro';
       --end: 50%;
       position: absolute;
       inset: 0;
-      width: 90vh;
+      width: 100%;
       /* transform: translate(-50%, 0); */
       aspect-ratio: 1;
       height: auto;
