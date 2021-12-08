@@ -76,7 +76,7 @@ import BasicLayout from '../layouts/BasicLayout.astro';
       <div class="planet-container">
         <img
           loading="lazy"
-          src="/images/planets/saturn.png"
+          src="/images/planets/saturn2.png"
           alt="Saturn"
           class="planet"
         />
@@ -98,17 +98,17 @@ import BasicLayout from '../layouts/BasicLayout.astro';
       <h2>Uranus</h2>
       <div class="grad-blocker"></div>
     </div>
-    <div class="planet-wrapper" id="neptun">
+    <div class="planet-wrapper" id="neptune">
       <div class="planet-container">
         <img
           loading="lazy"
           src="/images/planets/neptun.webp"
-          alt="Neptun"
+          alt="Neptune"
           class="planet"
         />
         <div class="gradient"></div>
       </div>
-      <h2>Neptun</h2>
+      <h2>Neptune</h2>
       <div class="grad-blocker"></div>
     </div>
   </main>
@@ -162,7 +162,12 @@ import BasicLayout from '../layouts/BasicLayout.astro';
     height: 90vh;
     /* background: red; */
   }
-
+  #saturn {
+    clip-path: none;
+    img {
+      clip-path: none;
+    }
+  }
   .planet-wrapper {
     /* height: 250vh; */
     position: relative;
@@ -179,6 +184,7 @@ import BasicLayout from '../layouts/BasicLayout.astro';
       clip-path: circle(50% at 50% 50%);
       /* transform: translateY(-50%); */
     }
+
     img {
       width: 90vh;
       aspect-ratio: 1;
@@ -186,6 +192,7 @@ import BasicLayout from '../layouts/BasicLayout.astro';
       margin: 0 auto;
       clip-path: circle(50% at center);
     }
+
     .gradient {
       content: '';
       --end: 50%;
